@@ -1,32 +1,44 @@
 pipeline {
     agent any
 
+    // Schedule build daily at 9:00 AM
+    triggers {
+        cron('0 9 * * *')
+    }
+
+    environment {
+        APP_NAME = "MyApp"
+    }
+
     stages {
         stage('Build') {
             steps {
-                echo 'Building the project...'
+                echo "Building ${APP_NAME} project..."
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Running tests...'
+                echo "Running tests for ${APP_NAME}..."
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying application...'
+                echo "Deploying ${APP_NAME} application..."
             }
         }
     }
 
     post {
         success {
-            echo 'Pipeline executed successfully!'
+            echo "${APP_NAME} Pipeline executed successfully!"
         }
         failure {
-            echo 'Pipeline failed!'
+            echo "${APP_NAME} Pipeline failed!"
+        }
+        always {
+            echo "Build process completed."
         }
     }
 }
