@@ -1,0 +1,27 @@
+# Jenkins pipeline code stored as a Python string
+
+jenkins_pipeline = """
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building project...'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+            }
+        }
+    }
+}
+"""
+
+# Save it to a Jenkinsfile
+with open("Jenkinsfile", "w") as file:
+    file.write(jenkins_pipeline)
+
+print("Jenkinsfile created successfully!")
