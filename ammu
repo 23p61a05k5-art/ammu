@@ -38,7 +38,7 @@ pipeline {
             echo "${APP_NAME} Pipeline failed!"
         }
         always {
-            echo "Build process completed."
+            echo "Build process is on the way."
         }
     }
 }
